@@ -1,0 +1,27 @@
+---
+title: 'Generation activity'
+description: 'Look up every AI step: who started it, how it went and what it cost. Start here when a customer reports a problem.'
+---
+
+**AI → Generation activity** lists every AI step MagicBook has run: writing, pictures, narration and voice input. For each step, the page shows who started it, how it went and what it cost.
+
+## Troubleshoot a customer report
+
+<Steps>
+  <Step title="Find the step">
+    Search for the customer, or filter the list to see failed steps.
+  </Step>
+  <Step title="Read the reason">
+    The error usually names the cause: a wrong key, no balance with the provider, a model name the provider changed, or a block from the safety check.
+  </Step>
+  <Step title="Fix the cause">
+    Correct the key on [AI providers](/admin/ai-providers), enable another model on [Text models](/admin/text-models) or [Image models](/admin/image-models), or check the [safety thresholds](/admin/safety).
+  </Step>
+  <Step title="Ask the customer to try again">
+    The customer can start the step again. A failed step is not charged.
+  </Step>
+</Steps>
+
+If steps stay waiting, the cron job is not running. See [Scheduler and queue problems](/troubleshooting/scheduler-and-queue).
+
+For a full list of causes and fixes, see [AI generation problems](/troubleshooting/ai-generation).

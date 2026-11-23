@@ -1,0 +1,39 @@
+---
+title: 'Google Analytics'
+description: 'Connect Google Analytics to measure visitors on the public site, and show website traffic on the admin dashboard.'
+---
+
+MagicBook can send visitor data to Google Analytics in two places: the public site, and the admin dashboard, where it shows traffic.
+
+## Public site
+
+<Steps>
+  <Step title="Create a property">
+    In [Google Analytics](https://analytics.google.com/), create a property and a web data stream for your site. Copy the **Measurement ID**, which starts with `G-`.
+  </Step>
+  <Step title="Save the ID">
+    Open **Backend Settings → Global Settings**, turn on **Enable Google Analytics for Homepage**, paste the ID into **Google Analytics Tracking ID** and press **Save**.
+  </Step>
+</Steps>
+
+## Admin dashboard
+
+The admin dashboard can show website traffic from Google Analytics. It uses a service account, so no one signs in to Google.
+
+<Steps>
+  <Step title="Create a service account">
+    In the Google Cloud Console, create a service account for the project that holds your property. Give it the **Viewer** role on the Google Analytics property, then create a JSON key for it.
+  </Step>
+  <Step title="Find the property ID">
+    In Google Analytics, open **Admin** and copy the numeric **Property ID**.
+  </Step>
+  <Step title="Save the settings">
+    In **Global Settings**, turn on **Enable Google Analytics for Admin Dashboard**, paste the **Google Analytics Property ID**, and upload the **Google Service Account Credentials** JSON file. Press **Save**.
+  </Step>
+</Steps>
+
+The dashboard shows **Connect Google Analytics to see website visitors here** until the property ID and the credentials file are both saved.
+
+<Note>
+Keep the JSON key private. Anyone with it can read your analytics data.
+</Note>

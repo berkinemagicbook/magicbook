@@ -1,0 +1,46 @@
+---
+title: 'System status'
+description: 'Check that the server, cron job, AI keys, PDF fonts and mail are ready, and what to do for each item that is not.'
+---
+
+**Platform → System Status** checks everything MagicBook needs to write, draw, narrate and export books. Open it after installing, after each update, and whenever a customer says something is stuck.
+
+## Needs attention
+
+When something is waiting on you, a **Needs attention** list appears at the top of the page. Each row opens the page where you deal with it:
+
+- Bank transfers waiting for approval, with how long the oldest has waited (SaaS plugin).
+- Payout requests to review, with the total requested (SaaS plugin).
+- Support tickets waiting for a reply.
+- Requests the safety check blocked in the last 24 hours. See [Safety](/admin/safety).
+
+The list is hidden when nothing is waiting. Stuck or failed AI steps show in the **Queue** check below it.
+
+## Results
+
+Each check shows one of three results:
+
+- **Ready**: the check passed.
+- **Needs attention**: MagicBook still works, but something should be fixed soon.
+- **Not working**: a feature is down until you fix it.
+
+Each result that is not **Ready** has a **Fix** button or a short instruction. **Check again** runs every check again.
+
+## What is checked
+
+| Check | Ready when |
+|---|---|
+| **Server** | PHP and its required extensions are in place. |
+| **Cron job** | The scheduler has run within the last few minutes. The page shows the cron line with a **Copy** button. |
+| **Queue** | Work is moving, and no steps are stuck in the queue. |
+| **AI keys** | Each job that the site uses has a working key and an enabled model. |
+| **PDF fonts** | The fonts for PDF downloads can be read and written. See [PDF fonts](/advanced/pdf-fonts). |
+| **Mail** | Mail can be sent with the saved settings. See [SMTP settings](/admin/smtp). |
+
+## Cron job
+
+When the cron job is missing, the page shows **Not working** and the cron line. Add it in your hosting panel, wait two minutes, then press **Check again**. See [Cron and queue](/installation/cron-and-queue).
+
+## AI keys
+
+The AI check looks at each job separately. A missing text key stops book writing. A missing image key stops pictures. A missing ElevenLabs key hides narration. The check names the job and links to the page where you fix it.

@@ -1,0 +1,58 @@
+---
+title: 'Cron and queue'
+description: 'The one cron job MagicBook needs, what it runs every minute, and how the background work finishes on shared hosting.'
+---
+
+MagicBook writes chapters, draws pictures and records narration in the background. One cron job runs the Laravel scheduler every minute, and the scheduler does that work. Without the cron job, a book stays on **Waiting…** forever.
+
+## The cron line
+
+Copy the exact line from **System Status → Cron job** or from the last installer page. It looks like this:
+
+```bash
+* * * * * cd /path/to/magicbook && php artisan schedule:run >> /dev/null 2>&1
+```
+
+Replace `/path/to/magicbook` with the folder that holds `artisan`. Add the line in your hosting panel's cron section, then wait two minutes. **System Status** should show **Cron job** as running.
+
+## What runs every minute
+
+| Job | When | What it does |
+|---|---|---|
+| Heartbeat | Every minute | Records that the scheduler is alive. System Status reads this record. |
+| Queue worker | Every minute, for up to 45 seconds | Works the queue of chapters, pictures and narration, then stops. |
+| Audiobook Studio | Every minute, when the plugin is installed | Records lines, mixes chapters and builds exports in short steps. |
+
+Other jobs run less often:
+
+| Job | When | What it does |
+|---|---|---|
+| Expired credit holds | Every hour, at minute 45 | Releases credits held for jobs that never finished. |
+| Run reaper | Every five minutes | Cleans up AI steps that stopped responding. |
+| Kid photo sweep | Every 15 minutes | Deletes any child photo that was never used to draw a character. |
+| Allowance refresh | Every hour, at minute 50 | Renews the monthly credit allowances of plans that are due. |
+| Voice Cloning | Every five minutes, when the plugin is installed | Removes deleted voices at ElevenLabs and applies the recording retention rule. |
+
+Jobs do not overlap. A job that is still running when the next minute starts is not started a second time.
+
+## The queue worker
+
+On shared hosting you have only one cron job, so the scheduler runs the queue worker for a short time each minute. Work that does not finish in that window continues on the next run.
+
+If your server runs a supervised `php artisan queue:work` process, set this in `.env`:
+
+```dotenv
+QUEUE_RUN_IN_SCHEDULER=false
+```
+
+Keep the cron job anyway. The heartbeat, the credit clean-up and the other jobs still need it.
+
+## Credits when a job fails
+
+A job holds the estimated credits when it starts and charges the actual cost when it finishes. If a job stalls or fails, the hold is released, either by the run reaper or by the hourly clean-up. The customer then sees the job as failed, not charged.
+
+## Check that it works
+
+1. Open **System Status** and check that **Cron job** shows running.
+2. Open **AI → Generation activity** after a test job. The job should move from waiting to finished within a few minutes.
+3. If the job stays waiting, see [Scheduler and queue](/troubleshooting/scheduler-and-queue).

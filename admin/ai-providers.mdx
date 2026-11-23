@@ -1,0 +1,54 @@
+---
+title: 'AI providers'
+description: 'Save, test, replace and remove the API keys for the eight AI providers MagicBook calls directly.'
+---
+
+**AI → AI Providers** holds the API key for each AI company. MagicBook calls each provider directly with its key. Nothing goes through a gateway or a third-party router.
+
+## The providers
+
+Each provider has one card. A provider can do one or more jobs:
+
+| Provider | Jobs | Used for |
+|---|---|---|
+| **OpenAI** | Writing, pictures, moderation | GPT models for writing and planning, GPT Image for pictures, and the free safety check. |
+| **Anthropic** | Writing | Claude models for long-form prose and editing. |
+| **Google Gemini** | Writing, pictures | Gemini models for writing, and image models that keep characters consistent. |
+| **xAI Grok** | Writing | Grok models for writing and planning. |
+| **Black Forest Labs (FLUX)** | Pictures | Illustrations, with reference images for consistent characters. |
+| **Ideogram** | Pictures | Covers and lettering. |
+| **Recraft** | Pictures | Covers, vector art and line art. |
+| **ElevenLabs** | Voice | Narration and voice input. |
+
+Each card links to the page where you create a key. See [Integrations](/integrations/overview).
+
+## Save a key
+
+<Steps>
+  <Step title="Open the card">
+    Find the provider's card. Its status says **Not set** until you save a key.
+  </Step>
+  <Step title="Paste the key">
+    Press **Add key**, paste the key into **API key**, and press **Save and test**. MagicBook saves the key and makes a test call. The status becomes **Saved, not tested** before the test and then a result.
+  </Step>
+  <Step title="Test again when needed">
+    **Test connection** makes a test call at any time, for example after you change a plan at the provider.
+  </Step>
+</Steps>
+
+## Replace or remove a key
+
+- **Replace** swaps the saved key for a new one. You cannot read the old key back.
+- **Remove** deletes the key. The models that use it stop working until you add a key again. The models stay in their lists, but show **No key**.
+
+Keys are stored encrypted in the database. The page never shows a saved key again, so keep your own copy in a password manager.
+
+## After you save keys
+
+Enable the models that use the keys:
+
+- [Text models](/admin/text-models) for writing.
+- [Image models](/admin/image-models) for pictures.
+- [Voices](/admin/voices) for narration and voice input.
+
+Safety checks use the OpenAI key. See [Safety](/admin/safety).

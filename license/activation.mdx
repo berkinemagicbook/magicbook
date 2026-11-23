@@ -1,0 +1,81 @@
+---
+title: 'License activation'
+description: 'Activate, check and deactivate your MagicBook license, and what to do when you move to a new server.'
+---
+
+MagicBook is activated with the license key from your Envato purchase and the Envato username of the buyer. You enter both once in the web installer. After that, you manage them on the **Activation** page of the admin panel.
+
+## What activation does
+
+When you activate, MagicBook sends the key and username to the license server. If the server accepts them:
+
+- The server's reply is saved in a file named `.lic` in the application root.
+- The key, the username and the license type are saved in General Settings.
+
+The **Activation** page shows **Activated** while the license is active. Updates from the admin panel use the saved license, so keep it active if you want to update from the panel. See [Update instructions](/updates/update-instructions).
+
+<Note>
+`.lic` is a hidden file. If you copy the application to another server, include hidden files. Otherwise the Activation page shows **Not Activated** until you activate again.
+</Note>
+
+## Activate the license
+
+<Steps>
+  <Step title="Open the Activation page">
+    In the admin sidebar, open **Platform → Activation**. The page is titled **License Activation**.
+  </Step>
+  <Step title="Enter your details">
+    Under **Activation Details**, enter the **License Key** and the **Envato Username**. Both are required.
+  </Step>
+  <Step title="Activate">
+    Click **Activate License**. When the server accepts the details, the status changes to **Activated**.
+  </Step>
+  <Step title="Check the result">
+    The **License Status** card shows **Status** and the **License Type** the license server returned for your key.
+  </Step>
+</Steps>
+
+If you installed MagicBook earlier, the fields are already filled in. In that case you only need to click **Activate License**.
+
+## Deactivate the license
+
+Deactivate before you move MagicBook to another domain or server.
+
+<Steps>
+  <Step title="Open the Activation page">
+    Open **Platform → Activation**.
+  </Step>
+  <Step title="Deactivate">
+    Click **Deactivate License**. MagicBook asks the license server to release the activation and removes its local copy.
+  </Step>
+</Steps>
+
+Deactivating does not delete any of your books, customers or settings.
+
+## Move to a new server
+
+<Steps>
+  <Step title="Deactivate on the old server">
+    Deactivate the license as described above.
+  </Step>
+  <Step title="Restore on the new server">
+    Install or restore MagicBook on the new server with the web installer, or with the files and database you copied.
+  </Step>
+  <Step title="Activate">
+    If you restored the files and the database, open **Platform → Activation** and click **Activate License**.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="There was an error while activating the application">
+    The license server did not accept the details or could not be reached. Check the key and username for typos and extra spaces, and confirm that your host allows outbound HTTPS requests. Then try again.
+  </Accordion>
+  <Accordion title="The page says Not Activated but the key is filled in">
+    The `.lic` file is missing or empty, usually because it was not copied with the other files. Click **Activate License** to create it again.
+  </Accordion>
+  <Accordion title="Deactivation failed">
+    The license server answered with an error. Wait a few minutes and try again. If it keeps failing, contact support with the exact text shown on the page.
+  </Accordion>
+</AccordionGroup>

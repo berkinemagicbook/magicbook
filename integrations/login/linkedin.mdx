@@ -1,0 +1,27 @@
+---
+title: 'LinkedIn login'
+description: 'Let customers sign in with their LinkedIn account by creating a LinkedIn app and saving its keys in MagicBook.'
+---
+
+LinkedIn login lets customers sign in with their LinkedIn account.
+
+## Create the LinkedIn app
+
+<Steps>
+  <Step title="Create an app">
+    Open the [LinkedIn Developer portal](https://www.linkedin.com/developers/) and create an app. Link it to a company page, which LinkedIn requires.
+  </Step>
+  <Step title="Add the redirect URL">
+    In the app's **Auth** settings, add the **Redirect URL** shown on **Backend Settings → Auth Settings → LinkedIn** to the authorised redirect URLs.
+  </Step>
+  <Step title="Request sign-in access">
+    In the app's products, request the sign-in product so that people can sign in with LinkedIn.
+  </Step>
+  <Step title="Copy the keys">
+    Copy the **Client ID** and the **Client Secret**.
+  </Step>
+</Steps>
+
+## Save the keys in MagicBook
+
+Open **Backend Settings → Auth Settings**, turn on **Enable LinkedIn Login**, paste the **LinkedIn API Key** (the Client ID) and the **LinkedIn API Secret Key** (the Client Secret), then press **Save**.

@@ -1,0 +1,29 @@
+---
+title: 'Registration and login'
+description: 'Control sign-up, email verification, plan choice at sign-up, and social login with Facebook, Google, X and LinkedIn.'
+---
+
+Registration and login settings are split across two pages under **Backend Settings**: **Registration Settings** and **Auth Settings**.
+
+## Registration Settings
+
+- **User Registration**: turn off to stop new people from signing up. Existing customers can still sign in.
+- **Email Verification**: when on, a new account must verify its email address before it can use the site. Turn it on if you use SMTP, so the verification mail can be sent. See [SMTP settings](/admin/smtp).
+- **Subscribe During Registration**: when on, a new customer can choose a plan while signing up. Needs the SaaS plugin.
+
+## Auth Settings
+
+Auth Settings adds social login to the sign-in page. Turn on **Login via Social (oAuth)** first, then enable each provider:
+
+| Provider | Switch | Keys to paste |
+|---|---|---|
+| Facebook | **Enable Facebook Login** | **Facebook API Key** and **Facebook API Secret Key** |
+| Twitter (X) | **Enable Twitter Login** | **Twitter API Key** and **Twitter API Secret Key** |
+| Google | **Enable Google Login** | **Google Client ID** and **Google Client Secret** |
+| LinkedIn | **Enable LinkedIn Login** | **LinkedIn API Key** and **LinkedIn API Secret Key** |
+
+Each provider shows a **Redirect URL**, also called the **Callback URL**. Copy it into the provider's app settings as the authorised redirect URI. The provider refuses to sign people in if the URLs do not match exactly.
+
+Step-by-step guides are in [Social login](/integrations/overview).
+
+Press **Save** on each page to keep the changes.

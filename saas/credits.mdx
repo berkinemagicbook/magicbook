@@ -1,0 +1,27 @@
+---
+title: 'Credits (admin)'
+description: 'How credits reach customers from plans, the free tier and sign-up, and how they are spent, held and released.'
+---
+
+Credits pay for AI work. Customers spend them when they write, draw, narrate or record a voice. This page explains where credits come from as an admin. For the customer's view, see [Credits](/account/credits).
+
+## Where credits come from
+
+- **Sign-up**: each new account receives the **Default Registration Credits** set on [General settings](/admin/general-settings).
+- **Plan allowance**: a monthly, yearly or lifetime plan gives credits each month. Unused credits do not carry over.
+- **Prepaid plans**: a one-time purchase gives credits that stay until spent. See [Prepaid plans](/saas/prepaid-plans).
+- **Admin adjustments**: you can see and release holds on a user's page under **Accounts → Users**. See [Users](/admin/users).
+
+## How credits are spent
+
+Each AI step holds its estimated cost when it starts and charges the actual cost when it finishes. Holds that never finish are released by the background work. See [Cron and queue](/installation/cron-and-queue).
+
+The order of spending is the plan allowance first, then credit packs. Accounts with unlimited credits are not charged.
+
+## Monthly renewal
+
+Every hour, the background work renews the allowance for plans that are due. A customer whose monthly plan renewed gets the new allowance on the renewal date. The old allowance does not carry over.
+
+## Costs
+
+The price of each AI step is set on the model pages: [Text models](/admin/text-models), [Image models](/admin/image-models), [Voices](/admin/voices). Set them so that the credits you sell cover your AI provider bill.

@@ -1,0 +1,107 @@
+---
+title: 'Web installer'
+description: 'Install MagicBook from your browser: what each step checks, what it writes, and how to sign in the first time.'
+---
+
+The installer runs at `/install`. It checks your server, saves the database connection, creates the tables and seeds the default data, activates your license and creates the first admin account.
+
+## Before you start
+
+<Steps>
+  <Step title="Upload the files">
+    Upload the application to your server, including hidden files such as `.env` and `.htaccess`. Turn on hidden files in your file manager or FTP client first, or those files are skipped.
+  </Step>
+  <Step title="Create a database">
+    Create an empty MySQL or MariaDB database and a user with full rights on it. Note the database name, user and password.
+  </Step>
+  <Step title="Have your license details ready">
+    You need the license key (your Envato purchase code) and the Envato username of the buyer.
+  </Step>
+  <Step title="Check the requirements">
+    Confirm the server meets the [requirements](/getting-started/requirements).
+  </Step>
+</Steps>
+
+## Run the installer
+
+<Steps>
+  <Step title="Welcome">
+    Open `https://YOUR_DOMAIN/install` and click **Start Installation**. The stepper shows five steps: Requirements, Permissions, Database, Activation and Complete.
+  </Step>
+  <Step title="Server Requirements">
+    The page lists the PHP version, each required PHP extension and the optional functions. Fix any item that shows as failed, then click **Next**. Read the whole list before you move on, because some items only show a warning.
+  </Step>
+  <Step title="Permissions">
+    The page checks that PHP can write to `.env` and to the folders it lists: `bootstrap/cache`, `public/uploads`, `public/media`, `lang`, and `storage` with its framework and logs subfolders. Fix any item marked as not writable, then click **Next**.
+  </Step>
+  <Step title="Database Configuration">
+    Fill in the connection details and click **Next**:
+
+    | Field | Value |
+    |---|---|
+    | **Hostname** | `localhost`, unless your host gave you another server |
+    | **Port** | `3306`, unless your host gave you another port |
+    | **Database Name** | The database you created |
+    | **Database User** | The user with rights on that database |
+    | **Database Password** | The user's password |
+
+    The installer tests the connection and writes the database settings to `.env`. If the test fails, the page shows the error and stays open.
+  </Step>
+  <Step title="License Activation">
+    Enter the **License Key** and the **Envato Username**, then click **Activate**. Both fields are required. Before this form appears, the installer creates the database tables and seeds the default data, so wait for the page to load and do not reload it.
+  </Step>
+  <Step title="Installation Complete">
+    When the license server accepts the key, the installer creates the admin account, stores the license and marks the install as finished. The page shows **Application Successfully Activated**, the default admin login, and the cron line with a **Copy** button. Add the cron job now, then click **Finish Installation**.
+  </Step>
+</Steps>
+
+## First sign-in
+
+Open `https://YOUR_DOMAIN/login` and sign in with the default admin account:
+
+| Field | Value |
+|---|---|
+| Email | `admin@example.com` |
+| Password | `admin12345` |
+
+<Warning>
+These credentials are the same on every install. Change the email and password straight away from your profile page. See [Profile and security](/account/profile-and-security).
+</Warning>
+
+## What the installer changes
+
+- Creates the database tables and seeds the roles, the payment gateway list, the default text and image models, the art styles and the finance settings.
+- Writes the database connection to `.env`.
+- Stores the license key, username and license type in General Settings, and writes the license server's reply to a `.lic` file in the application root.
+- Creates the **Admin** account with the `admin` role and a verified email address.
+- Creates `storage/installed`. While that file exists, `/install` redirects to the login page, so the installer cannot run again by accident.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Invalid database credentials">
+    The message includes the database error. Check the hostname and port, the exact database and user names (some hosts add an account prefix), and that the user has rights on that database.
+  </Accordion>
+  <Accordion title="Failed to migrate the database or failed to seed the database">
+    The message ends with the cause, often a database user that cannot create tables. Fix it, then reload the Activation step. It runs the migrations and seeders again.
+  </Accordion>
+  <Accordion title="There was an error while activating your application">
+    The license server rejected the details or could not be reached. Check the key and username for stray spaces, confirm outbound HTTPS works, then click **Activate** again.
+  </Accordion>
+  <Accordion title="Installer redirects to the login page">
+    `storage/installed` exists, so the install is already finished. Sign in instead.
+  </Accordion>
+</AccordionGroup>
+
+For more fixes, see [Installation problems](/troubleshooting/installation).
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Add the cron job" icon="clock" href="/installation/cron-and-queue">
+    Needed before any book chapter, picture or narration can finish.
+  </Card>
+  <Card title="Post-install checklist" icon="list-check" href="/installation/post-install-checklist">
+    The first-day tasks in the right order.
+  </Card>
+</CardGroup>

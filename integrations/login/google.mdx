@@ -1,0 +1,28 @@
+---
+title: 'Google login'
+description: 'Let customers sign in with their Google account by creating a Google OAuth client and saving its keys in MagicBook.'
+---
+
+Google login lets customers sign in with their Google account.
+
+## Create the Google client
+
+<Steps>
+  <Step title="Open Google Cloud Console">
+    Go to the [Google Cloud Console](https://console.cloud.google.com/), choose or create a project, and open the OAuth consent screen. Fill it in with your site name and contact email.
+  </Step>
+  <Step title="Create the credentials">
+    Create an **OAuth client ID** for a web application. Copy the **Redirect URL** from **Backend Settings → Auth Settings → Google** and add it as an authorised redirect URI.
+  </Step>
+  <Step title="Copy the keys">
+    Copy the **Client ID** and the **Client Secret**.
+  </Step>
+</Steps>
+
+## Save the keys in MagicBook
+
+Open **Backend Settings → Auth Settings**, turn on **Login via Social (oAuth)** and **Enable Google Login**, paste the **Google Client ID** and **Google Client Secret**, then press **Save**. The sign-in page then shows a Google button.
+
+<Note>
+The redirect URI must match the Redirect URL exactly, including the `https://` and the domain. Google refuses to sign people in if they differ.
+</Note>

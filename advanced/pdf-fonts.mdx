@@ -1,0 +1,23 @@
+---
+title: 'PDF fonts'
+description: 'The fonts MagicBook uses for PDF downloads, the fallback for other languages, and how to check that PDFs can be made.'
+---
+
+Book PDFs use fonts that ship with MagicBook, so they look the same on every server.
+
+## Bundled fonts
+
+- **Literata** is the reading font for the text of books.
+- **Fredoka** is a rounded display font, also under an open licence.
+
+Both are open-licence fonts (SIL Open Font License) kept in `resources/fonts/pdf`.
+
+## Other languages
+
+Literata and Fredoka cannot show every script. A book in a language they do not cover, such as Arabic, Chinese or Hindi, uses the bundled **DejaVu** font instead.
+
+## Check the fonts
+
+Open **Platform → System Status** and look at **PDF fonts**. It says **Ready** when the fonts can be read and the folder the server writes to is writable. If it says **Needs attention**, make sure `storage/fonts` can be written by the web server, then press **Check again**.
+
+If a PDF download still fails, see [Narration and PDF problems](/troubleshooting/narration-and-pdf).

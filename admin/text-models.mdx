@@ -1,0 +1,50 @@
+---
+title: 'Text models'
+description: 'Choose which AI models write, plan and edit books, what each model costs customers, and which model does which job.'
+---
+
+**AI → Text Models** chooses the models that write, plan and edit books, and sets what each one costs. A text model can be used only when its provider has a saved key. See [AI providers](/admin/ai-providers).
+
+## Add a model
+
+Press **Add a model** and fill in:
+
+- **Provider**: the company that runs the model.
+- **Model id**: the exact name the provider uses for the model.
+- **Name shown to admins**: a name you recognise in this list.
+- **Tier**: **Premium**, **Standard** or **Fast**. Each job uses a tier by default.
+- **Credits per 1,000 words**: what customers pay for text from this model.
+- **Context window (tokens)** and **Max output tokens**: the most text the model reads and writes in one call.
+- **Supports JSON schema replies**, **Supports streaming** and **Accepts images**: tick what the model can do. MagicBook only uses features a model supports.
+
+Press **Save** to add the model. Use **Test** to check that the model answers.
+
+## Choose the model for each job
+
+**Who does which job** lists the jobs MagicBook needs. Each job can use **Automatic** or one model you pick. The jobs are:
+
+| Job | Used for | Default tier |
+|---|---|---|
+| **Planner** | Premises, outlines, page plans and the Story Journal. | Standard |
+| **Writer** | Scenes and chapters for novels and chapter books. | Premium |
+| **Editor** | Rewrites, continuity checks and beta-reader notes. | Premium |
+| **Kids writer** | Picture-book and Storyland text for young readers. | Premium |
+| **Utility** | Summaries, blurbs, tagging and other small jobs. | Fast |
+
+Choose a model for a job, or leave it on **Automatic**. The job shows **disabled** when no model can do it. Press **Save defaults** to keep the choices. **Test reply** asks the chosen model for a short reply, to check the choice works.
+
+<Note>
+A job shows **No model can do this job yet.** until you enable a model with a saved key that fits its tier. Enable one before you open the site.
+</Note>
+
+## Enable, order and remove models
+
+Each model has a switch to enable it. **Move up** and **Move down** change the order. The first enabled model is the default when a job uses **Automatic**. **Remove** deletes a model from the list.
+
+## Costs
+
+Credits are charged per 1,000 words of text, and the actual charge is taken when a step finishes. See [AI tools](/user-guide/ai-tools) for how holds work. Set prices that cover your provider bill with a margin you choose.
+
+## Use the Generation activity page
+
+If a step fails, open [Generation activity](/admin/generation-activity). It shows the model, the error and the cost.

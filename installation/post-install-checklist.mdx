@@ -1,0 +1,50 @@
+---
+title: 'Post-install checklist'
+description: 'The ordered first-day tasks after installing MagicBook: security, AI, safety, limits, content and checks.'
+---
+
+Work through this list once after the install. The order matters: AI models need keys first, and safety checks need a working model.
+
+## Security
+
+- [ ] Change the default admin email and password. See [Profile and security](/account/profile-and-security).
+- [ ] Set `APP_DEBUG=false` in `.env` before customers sign up.
+- [ ] Turn on two-factor authentication on the admin account.
+
+## Cron and status
+
+- [ ] Add the [cron job](/installation/cron-and-queue). Within two minutes, **System Status** shows **Cron job** as running.
+- [ ] Open **Platform → System Status** and clear every item that says **Needs attention** or **Not working**.
+
+## AI
+
+- [ ] Save keys in **AI → AI Providers** and press **Test connection** on each one. See [AI providers](/admin/ai-providers).
+- [ ] Enable the text models you want in **AI → Text Models**, choose who does each job and set the credits per 1,000 words. See [Text models](/admin/text-models).
+- [ ] Enable image models in **AI → Image Models**, set the credits per picture and check that the models you use can take character references. See [Image models](/admin/image-models).
+- [ ] With an ElevenLabs key, switch on narrators in **AI → Voices**, choose a default narrator and set the narration price. See [Voices](/admin/voices).
+- [ ] Set the thresholds in **AI → Safety** for each audience and turn on the check for adult books if you want it. See [Safety](/admin/safety).
+
+## Books and content
+
+- [ ] Set the book maximums in **Books → Book settings**. See [Book settings](/admin/book-settings).
+- [ ] Review the picture styles in **Books → Art styles**. Hide or add styles, and draw preview pictures. See [Art styles](/admin/art-styles).
+- [ ] Set up website content in **Frontend Settings**: the landing page, logos, SEO, the privacy policy and terms, FAQs and testimonials. See [Website content](/admin/website-content).
+
+## Accounts and mail
+
+- [ ] Set the website name, URL and time zone in **Backend Settings → Global Settings**. See [Global settings](/admin/global-settings).
+- [ ] Set up SMTP and send a test email. See [SMTP settings](/admin/smtp).
+- [ ] Choose whether people can register, whether they must verify their email and whether social login is enabled. See [Registration and login](/admin/registration-and-login).
+- [ ] Set the default registration credits in **General Settings**.
+
+## Plans and billing (SaaS plugin)
+
+- [ ] Install the SaaS plugin from **Platform → Plugins** if you sell plans.
+- [ ] Create plans, the free tier and at least one payment gateway. See [Plans](/saas/plans) and [Payment gateways](/gateways/overview).
+- [ ] Add the company details on **Finance → Invoice Settings** before the first sale.
+
+## Final test
+
+- [ ] Register a new account, make a Writer's Room novel up to the Plot stage, and write one scene.
+- [ ] Make a picture book in Storyland or Family and draw one page.
+- [ ] Open the reader, download a PDF and share a link.

@@ -1,0 +1,28 @@
+---
+title: 'Google reCAPTCHA'
+description: 'Protect the public forms from bots with Google reCAPTCHA v3, using a site key and a secret key.'
+---
+
+Google reCAPTCHA v3 checks visitors in the background and scores how likely they are to be a bot. MagicBook uses it on public forms, such as sign-up and the contact form.
+
+## Create the keys
+
+<Steps>
+  <Step title="Register the site">
+    Open the [reCAPTCHA admin console](https://www.google.com/recaptcha/admin) and register a new site. Choose **reCAPTCHA v3**.
+  </Step>
+  <Step title="Add your domain">
+    Add the domain your site uses, such as `magicbook.example.com`.
+  </Step>
+  <Step title="Copy the keys">
+    Copy the **site key** and the **secret key**.
+  </Step>
+</Steps>
+
+## Save them in MagicBook
+
+Open **Backend Settings → Global Settings**, turn on **Enable Google reCaptcha v3**, paste the **Google reCaptcha Site Key** and the **Google reCaptcha Secret Key**, then press **Save**.
+
+<Note>
+The site key is visible in the page code, which is normal. Keep the secret key private.
+</Note>

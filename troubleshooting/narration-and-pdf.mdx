@@ -1,0 +1,43 @@
+---
+title: 'Narration and PDF problems'
+description: 'Fix a missing Narrate button, narration that will not start, audio that does not play, and PDF downloads that fail.'
+---
+
+Narration and PDF downloads are the two features that depend on the most outside pieces: an ElevenLabs key, a plan that includes them, the background work, and fonts on the server.
+
+## No Narrate button
+
+The **Narrate** button is hidden until all of these are true:
+
+- An ElevenLabs key is saved on [AI providers](/admin/ai-providers).
+- At least one voice is switched on in [Voices](/admin/voices).
+- The customer's plan includes **Narration**.
+
+The reader shows which one is missing. If it says **Narration is not part of your plan.**, the plan needs narration. See [Plans](/saas/plans).
+
+## Narration does not start
+
+- The customer has no credits left for the narration price. The reader and the account show the balance.
+- The cron job is not running. Narration is recorded in the background. See [Scheduler and queue problems](/troubleshooting/scheduler-and-queue).
+- The ElevenLabs key or the voice is no longer valid. Check the step's error on [Generation activity](/admin/generation-activity).
+
+## Audio does not play
+
+- Browsers block sound until the reader presses a button. Press **Hear a sample** or **Narrate** first.
+- Check the device volume and the browser's sound settings for the site.
+- Reload the page. If one chapter still does not play, ask the customer to record it again with **Record narration**.
+
+## Narrator missing from the list
+
+A voice appears only when the admin has switched it on. Children's books show only the voices marked **For children**.
+
+## PDF download fails
+
+- Open **Platform → System Status** and check **PDF fonts**. See [PDF fonts](/advanced/pdf-fonts).
+- The folder `storage/fonts` must be writable by the web server.
+- A very long book can take longer than the server allows. Raise the PHP `max_execution_time` for the site, or ask the customer to try a shorter book.
+- The download is limited to ten per minute for each customer. A customer who tries too often sees a short wait.
+
+## Share link does not open
+
+Check that **Share** shows a link and that the book is still shared. Press **Stop sharing** and then **Make a link** again to create a new one. See [Sharing and PDF](/user-guide/sharing-and-pdf).

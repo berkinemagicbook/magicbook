@@ -1,0 +1,32 @@
+---
+title: 'Storage'
+description: 'Where MagicBook keeps uploads, pictures, narration and generated files, and how to store media on a cloud bucket.'
+---
+
+MagicBook keeps three kinds of files: uploads from customers (images, logos and the media library), generated files (pictures, narration and PDFs), and the application's own working files in `storage/`.
+
+## Where files go
+
+- **Local server**: the default. Files are kept on the same machine as MagicBook, in the `public/` and `storage/` folders. Back these folders up.
+- **Cloud storage**: appears on **Platform → General Settings** once you install a storage plugin, such as Amazon S3, Wasabi, Cloudflare R2 or Google Cloud Storage. Choose it under **Default Storage**.
+
+New uploads use the storage you choose. Files that were already uploaded stay where they are.
+
+## Upload limits
+
+**Upload limits** on [General settings](/admin/general-settings) sets the largest image a customer may upload. Video uploads are off by default. The server's own PHP upload limits also apply, so raise `upload_max_filesize` and `post_max_size` in PHP if large images fail.
+
+## Folders the server must write to
+
+The web server user must be able to write to:
+
+- `storage/`, including `storage/logs` and the framework cache folders
+- `bootstrap/cache/`
+- `public/uploads/` and `public/media/`
+- `lang/`, for translations
+
+The installer's Permissions page checks these folders. See [Web installer](/installation/web-installer).
+
+## Backups
+
+Back up the database, `storage/`, `public/uploads/` and the `.env` file. A database backup without the uploads cannot restore the pictures in books.

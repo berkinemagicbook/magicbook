@@ -1,0 +1,30 @@
+---
+title: 'Cache'
+description: 'Where MagicBook keeps its cache, why the scheduler heartbeat needs a persistent cache, and the cache options you can choose.'
+---
+
+MagicBook stores cached data, including the scheduler heartbeat that **System Status** reads, in the cache store set by `CACHE_STORE`.
+
+## Default store
+
+The default is `database`, which keeps the cache in the database. It works on shared hosting without extra services, and the cache survives a restart.
+
+## Other stores
+
+If your host offers Redis or Memcached, you can use them. Set `CACHE_STORE` to `redis` or `memcached`, and fill in the matching host and port settings in `.env`. See [Environment variables](/advanced/environment-variables).
+
+## Keep the cache persistent
+
+<Warning>
+Do not use the `array` store on a live site. It keeps the cache only for one request. The scheduler heartbeat is then lost every minute, and **System Status** reports the cron job as not running even when it runs.
+</Warning>
+
+## Clear the cache
+
+After you change `.env` or update MagicBook, clear the cache from the server:
+
+```bash
+php artisan optimize:clear
+```
+
+This clears configuration, routes, views and cached data. It does not delete books, users or files.

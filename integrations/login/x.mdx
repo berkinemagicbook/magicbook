@@ -1,0 +1,28 @@
+---
+title: 'X (Twitter) login'
+description: 'Let customers sign in with their X account by creating an X app and saving its keys in MagicBook.'
+---
+
+X login lets customers sign in with their X (formerly Twitter) account. MagicBook lists it as **Twitter** on the Auth Settings page.
+
+## Create the X app
+
+<Steps>
+  <Step title="Create a project and app">
+    Open the [X developer portal](https://developer.x.com/), create a project and an app inside it.
+  </Step>
+  <Step title="Set up user authentication">
+    In the app settings, turn on user authentication with OAuth. Set the callback URI to the **Redirect URL** shown on **Backend Settings → Auth Settings → Twitter**.
+  </Step>
+  <Step title="Copy the keys">
+    Copy the **API Key** and the **API Secret Key** from the app's keys page.
+  </Step>
+</Steps>
+
+## Save the keys in MagicBook
+
+Open **Backend Settings → Auth Settings**, turn on **Enable Twitter Login**, paste the **Twitter API Key** and the **Twitter API Secret Key**, then press **Save**.
+
+<Note>
+X changes its developer plans and their limits from time to time. Check that the plan you use allows sign-in before you launch.
+</Note>

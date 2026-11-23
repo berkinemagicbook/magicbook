@@ -1,0 +1,44 @@
+---
+title: 'Admin dashboard'
+description: 'What the admin dashboard shows: the month in figures, the business, books and AI, background work, safety and people.'
+---
+
+The admin dashboard is the first screen after you sign in as an admin. It opens with the month in figures, then the business, the AI work and the people using the site.
+
+## Top of the page
+
+**Check for updates** and a few **Shortcuts** to Users, Orders, AI activity and Tickets sit next to the title. Below them, the stat boxes show new members, active authors, new books, AI steps and, with the SaaS plugin, subscribers.
+
+Setup checks (AI keys, mail, PDF fonts, the cron job) and work waiting on you (bank transfers, payout requests, tickets waiting for a reply, blocked requests) are on **Platform → System Status**. See [System status](/admin/system-status).
+
+## Business
+
+- **Finance dashboard** opens the finance screen. See [Finance dashboard](/saas/finance-dashboard).
+- **Bank transfers** lists transfers waiting for approval, with **Proof uploaded** when the customer has sent a receipt.
+- **Revenue** shows completed orders over the last 12 months and this month so far.
+- **Latest orders** shows the five most recent orders.
+
+The business cards appear only with the SaaS plugin.
+
+## Books and AI
+
+- **Book settings** opens the book maximums. See [Book settings](/admin/book-settings).
+- **AI generation** counts every writing, picture and narration step over the last 30 days or 12 months: how many succeeded, how many failed, the credits charged and the median time a step takes.
+- **Busiest AI steps**, **Models in use** and **Most active authors** show where the AI work goes.
+
+## Background work
+
+The **Cron job** card says **Cron job running** or **Cron job not running**. The queue shows how many steps are waiting, working, and how many failed in the last 24 hours. If the cron job is not running, no chapter or picture finishes. See [Cron and queue](/installation/cron-and-queue).
+
+## Safety
+
+**Safety** counts the AI requests that were **Flagged** and **Blocked** in the last 30 days, with a link to the **Log**. See [Safety](/admin/safety).
+
+## People and support
+
+- **Accounts dashboard** opens the account overview. See [Users](/admin/users).
+- **Sign-ups** shows new accounts per month over the last 12 months, and **Newest users** lists the latest.
+- **Support tickets** counts all tickets and the urgent ones.
+- **Notifications** shows unread system notifications.
+- **Users by country** appears once customers have a country set.
+- **Website traffic** shows visitors from Google Analytics. It needs the analytics settings in [Global settings](/admin/global-settings).

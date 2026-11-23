@@ -1,0 +1,39 @@
+---
+title: 'Safety'
+description: 'Set how strict the AI safety check is for each audience, and review every request the check flagged or blocked.'
+---
+
+**AI → Safety** sets how strict the content check is. Every request and every upload goes through the check. Children's and teen books are not generated until a check is available.
+
+## The check
+
+The check uses OpenAI's moderation model. It is free to call, and it checks text and images. Save an OpenAI key on [AI providers](/admin/ai-providers) to turn it on. Without a key, **No safety check can run** is shown, and children's and teen books cannot be made.
+
+## What is checked
+
+The check runs on every request and upload, for every audience. The thresholds set how strict it is for each audience:
+
+- Ages 3 to 5
+- Ages 6 to 8
+- Ages 9 to 12
+- Teens
+- Adults
+
+The thresholds are set per category for each audience. A lower threshold blocks more. **Reset to defaults** restores the default thresholds after you confirm.
+
+Two rules always apply, whatever the thresholds say:
+
+- Sexual content involving minors is always blocked.
+- A child-facing book is checked with its audience's thresholds before any text is shown.
+
+**Also check results for adult books** adds a check on the text the AI writes for adult books.
+
+Press **Save safety settings** to keep the changes.
+
+## Blocked work is not charged
+
+When the check blocks a request or a result, it is not shown and is not charged. The customer sees a message that the content was blocked.
+
+## Moderation log
+
+**AI → Safety → Moderation log** lists everything the check flagged or blocked, with the audience and the category. Clean checks are not recorded, so the log stays short. Use it to see whether the thresholds are too strict or too loose.

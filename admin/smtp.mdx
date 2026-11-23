@@ -1,0 +1,29 @@
+---
+title: 'SMTP settings'
+description: 'Connect MagicBook to a mail server so it can send verification emails, notifications and receipts, and send a test email.'
+---
+
+**Backend Settings → SMTP Settings** sets the mail server MagicBook uses to send email. Email is used for account verification, password resets, notifications and receipts.
+
+## Fill in the server
+
+| Field | Value |
+|---|---|
+| **SMTP Host** and **SMTP Host Name** | The mail server's address, from your mail provider. |
+| **SMTP Port** | Usually `587` for TLS or `465` for SSL. |
+| **SMTP Username** and **SMTP Password** | The account the mail server gives you. |
+| **SMTP Encryption** | **TLS** or **SSL**, as your provider requires. |
+| **Sender Email Address** | The address emails come from. It should belong to your domain. |
+| **Sender Full Name** | The name shown with the address, such as your site name. |
+
+Press **Save** to keep the settings.
+
+## Send a test email
+
+Press **Test SMTP Connection**, enter an **Email Address**, a **Subject** and a **Message**, then press **Send**. Save your settings first, because the test uses the saved values.
+
+If the email does not arrive, check the spam folder and the **System Status → Mail** check.
+
+## Log instead of sending
+
+While you test, `MAIL_MAILER=log` in `.env` writes the emails to the log file instead of sending them. Switch back to SMTP before you open the site. See [Environment variables](/advanced/environment-variables).

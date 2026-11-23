@@ -1,0 +1,57 @@
+---
+title: 'Audiobook Studio'
+description: 'Turn a book or an uploaded manuscript into a full-cast audiobook with voices, sound design and M4B, MP3 or ACX export.'
+---
+
+Audiobook Studio turns a book from the shelf, or an uploaded manuscript, into an audiobook with a cast of voices. A customer chooses a narrator and character voices, adds sound effects and music, and exports the result.
+
+## What customers get
+
+- An audiobook from a book on the shelf, from an uploaded manuscript, or from pasted text.
+- **Upload formats**: TXT, Markdown, DOCX and EPUB.
+- **Speaker detection** with AI, which suggests who speaks each line.
+- Sound effects, ambience and music, with per-chapter mixing.
+- **Export** as M4B, MP3, or an ACX pack for Audible.
+
+Audiobook Studio appears under **Books** in the sidebar when the plugin is installed and the customer's plan includes it. Customers without it see **Audiobook Studio — upgrade to unlock**.
+
+## Install and enable
+
+<Steps>
+  <Step title="Install">
+    Open **Platform → Plugins**, find Audiobook Studio and press **Install**.
+  </Step>
+  <Step title="Open its settings">
+    Open **Platform → General Settings → Plugins → Audiobook Studio**.
+  </Step>
+  <Step title="Switch it on">
+    Turn on **Enable Audiobook Studio**. Decide whether the free tier gets it with **Include in the free tier**. Users without a plan can use the studio, and their credits and narration minutes still apply.
+  </Step>
+  <Step title="Set the prices">
+    Set the credits per 1,000 characters for each voice model, per sound effect or ambience, per minute of music, and per 10,000 characters of speaker detection.
+  </Step>
+  <Step title="Set the limits">
+    Set the characters and chapters per audiobook, the manuscript upload size in MB, the sounds per audiobook, and the longest script line in characters. Longer paragraphs are split at sentence ends.
+  </Step>
+  <Step title="Give it to plans">
+    Add Audiobook Studio to the plans that should include it under **What's included**. See [Plans](/saas/plans).
+  </Step>
+</Steps>
+
+## Voices and speaker finding
+
+The studio uses your ElevenLabs key from **AI → AI Providers** and the voices you switched on in **AI → Voices**. Customers can also cast their own cloned voices if [Voice Cloning](/plugins/voice-cloning) is installed.
+
+**Find speakers with AI** uses your utility text model. See [Text models](/admin/text-models).
+
+Recordings count toward each plan's **Narration minutes per month**.
+
+## ffmpeg
+
+Audiobook Studio uses ffmpeg to mix audio, add sound effects and build M4B files. The plugin uses the ffmpeg installed on the server first, and the copy shipped in `vendor/ffmpeg` otherwise. Press **Test ffmpeg** on the settings page to check it. The page shows whether **shell_exec** is enabled.
+
+Without ffmpeg, audiobooks are voice only, and they export as MP3. See [ffmpeg](/advanced/ffmpeg).
+
+## Processing
+
+Renders run in short steps from the cron job, once a minute. If the cron job is missing, the studio runs the work while the customer keeps the page open. See [Cron and queue](/installation/cron-and-queue).

@@ -1,0 +1,42 @@
+---
+title: 'Scheduler and queue problems'
+description: 'Fix books, pictures and narration that stay on Waiting, a cron job that does not run, and a queue that stops moving.'
+---
+
+A chapter, picture or narration that stays on **Waiting…** almost always means the cron job is not running. Work starts only when the scheduler runs.
+
+## Check the cron job first
+
+1. Open **Platform → System Status** and look at **Cron job**.
+2. If it says **Not working**, the cron line is missing or wrong. Copy the exact line from the page, add it in your hosting panel, then wait two minutes and press **Check again**.
+3. If it says **Ready** but the work still waits, go to the next steps.
+
+The line must run from the folder that holds `artisan`:
+
+```bash
+* * * * * cd /path/to/magicbook && php artisan schedule:run >> /dev/null 2>&1
+```
+
+Check the path, and the PHP binary if your host needs its full path, such as `/usr/bin/php`.
+
+## The cron job runs, but work still waits
+
+- **Queue backlog**: many jobs are waiting. The queue worker runs for up to 45 seconds each minute. A large backlog takes several minutes to clear.
+- **Long jobs**: a whole novel, a full audiobook or a long narration can take longer than one minute. Each step continues on the next run.
+- **Two runs overlap**: a run still going when the next minute starts is not started again. Wait for the current run to end.
+
+## Steps stuck in Working
+
+A step that stops responding is marked as failed by the background clean-up and its credits are released. If many steps stay in **Working** for a long time, open **AI → Generation activity** and read the errors.
+
+## A supervised queue worker is running
+
+If your server runs `php artisan queue:work` as a service, set `QUEUE_RUN_IN_SCHEDULER=false` in `.env`. Keep the cron job anyway. See [Environment variables](/advanced/environment-variables).
+
+## The heartbeat is missing on a test server
+
+On a server that does not keep a persistent cache, the cron check always fails. Set `CACHE_STORE` to `database` or another persistent store. See [Cache](/advanced/cache).
+
+## Check that work finishes
+
+Open **AI → Generation activity** and start a small test, such as one picture. Its status should change from **Waiting** to **Finished** within a few minutes. If it does not, the problem is still the cron job.

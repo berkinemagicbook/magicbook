@@ -1,0 +1,42 @@
+---
+title: 'Installation problems'
+description: 'Fix the errors the web installer and the first start can show: database, permissions, required PHP functions, activation and the cron job.'
+---
+
+Most installer problems come down to the database connection, file permissions, a PHP function that the host has disabled, or a license that the server did not accept.
+
+## The installer says a requirement is missing
+
+- A **PHP extension** is missing. Enable it in your host's PHP settings. The installer lists every extension it needs. See [Requirements](/getting-started/requirements).
+- **proc_open** is disabled. MagicBook needs it to start the background work. Ask your host to enable it in `disable_functions`. Some hosts disable it by default.
+- **Apache mod_rewrite** is off. Turn it on, or move the site to a host that supports the `.htaccess` file.
+
+## The permissions check fails
+
+The installer lists each file and folder it needs to write to. Make the folder writable for the web server user, then press **Check again**. The usual ones are `storage/`, `bootstrap/cache/`, `public/uploads/` and `public/media/`. The `.env` file must also be writable during install.
+
+## Invalid database credentials
+
+The message includes the database error. Check the hostname and port, and the exact names of the database and user, because some hosts add an account prefix. Confirm that the user has rights on that database.
+
+## Migration or seeding failed
+
+The message ends with the cause, often a database user that cannot create tables. Fix the user's rights, then reload the Activation step. It runs the migrations and seeders again.
+
+## Activation failed
+
+- Check the license key and the Envato username for stray spaces.
+- Confirm that the server can make outbound HTTPS requests.
+- Try again after a few minutes if the license server was busy.
+
+## The installer sends me to the login page
+
+`storage/installed` exists, so the install is already finished. Sign in with your admin account. Do not delete `storage/installed` on a live site, because it marks the install as finished. Contact support if you need to run the installer again.
+
+## The site shows a blank page or a 500 error
+
+Set `APP_DEBUG=true` for a short time to see the error, then set it back to `false`. Read `storage/logs/laravel.log` for the cause. Common causes are a missing PHP extension, a folder that cannot be written, or a wrong database password in `.env`.
+
+## Still stuck
+
+Open **Platform → System Status** once the site loads. It lists the failing items, with the fix for each one. Contact support with the text of the error and your System Status results.

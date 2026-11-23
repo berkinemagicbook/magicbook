@@ -1,0 +1,78 @@
+---
+title: 'Introduction'
+description: 'What MagicBook is, who uses it, and the three ways customers make books with AI.'
+---
+
+## What MagicBook is
+
+MagicBook is a self-hosted web application that writes books with AI. You install it on your own server, save the AI provider keys you pay for, and your customers make books in your site. Every page of the story (text, pictures and narration) is written and drawn by the AI providers you choose.
+
+It is built on Laravel 13 and Livewire 4. It needs PHP 8.3 or newer, a MySQL or MariaDB database and one cron job, so it runs on ordinary shared hosting. The core does not need ffmpeg, a Node process or a queue supervisor.
+
+## The three modes
+
+<CardGroup cols={3}>
+  <Card title="Storyland" icon="shapes">
+    Children make a picture book by tapping pictures. Inkling the owl reads every step aloud, so nobody has to type.
+  </Card>
+  <Card title="Family" icon="heart">
+    Parents make a personal bedtime story that stars their own child, starting from a recipe card.
+  </Card>
+  <Card title="Writer's Room" icon="pen-nib">
+    Authors plan, draft and revise a novel, a chapter book or a short story, with a Story Journal for characters and places.
+  </Card>
+</CardGroup>
+
+Every mode ends in a book on the shelf. A book can be read on the screen, shared by private link, downloaded as a PDF and, with narration, read aloud.
+
+## Who uses MagicBook
+
+<CardGroup cols={2}>
+  <Card title="Admin" icon="user-shield">
+    The site owner. The admin installs MagicBook, saves the AI keys, chooses which models write and draw, sets the limits for each book format, manages users and, with the SaaS plugin, sells plans.
+  </Card>
+  <Card title="Customers" icon="book-open">
+    People who register on your site. They make books in one of the three modes, read them, share them, and keep their children and voices in their library.
+  </Card>
+</CardGroup>
+
+## What is in the box
+
+<CardGroup cols={2}>
+  <Card title="Bookshelf and books" icon="book-open" href="/user-guide/bookshelf">
+    One shelf for every book, with covers or spines, search, sorting and a reader for each book.
+  </Card>
+  <Card title="Writer's Room" icon="feather" href="/user-guide/writers-room/overview">
+    Spark, Shape, Plot, Cast & World, Story Room and the manuscript editor, with AI help at every step.
+  </Card>
+  <Card title="Picture books and illustration" icon="palette" href="/user-guide/picture-studio">
+    Pages drawn in one art style, with characters that look the same on every page.
+  </Card>
+  <Card title="Narration and voices" icon="speech" href="/user-guide/narration">
+    Narrators from ElevenLabs, a Voices library and a built-in reader that can read books aloud.
+  </Card>
+  <Card title="Admin panel" icon="gauge" href="/admin/overview">
+    AI providers and models, safety checks, book limits, users, website content, languages and system status.
+  </Card>
+  <Card title="Plugins" icon="puzzle-piece" href="/plugins/overview">
+    Optional extras: the SaaS plugin for plans and payments, Audiobook Studio, and Voice Cloning.
+  </Card>
+</CardGroup>
+
+<Note>
+Plans, credits and payment gateways come from the MagicBook SaaS plugin. Without that plugin, the site has no plans or checkout. See [SaaS plugin](/plugins/saas).
+</Note>
+
+## Where to start
+
+<CardGroup cols={3}>
+  <Card title="Check requirements" icon="server" href="/getting-started/requirements">
+    PHP, extensions, database and folders your host needs.
+  </Card>
+  <Card title="Run the installer" icon="download" href="/installation/web-installer">
+    Install from the browser in a few steps.
+  </Card>
+  <Card title="Make a first book" icon="rocket" href="/getting-started/quickstart">
+    From a fresh install to a finished book in one sitting.
+  </Card>
+</CardGroup>

@@ -1,0 +1,47 @@
+---
+title: 'AI tools'
+description: 'What the AI does in each part of MagicBook, what each step costs in credits, and what happens when a step fails or is blocked.'
+---
+
+MagicBook uses AI in four ways: planning and writing text, drawing pictures, reading aloud, and checking safety. Every AI step runs in the background and appears in the **AI activity** card on Home.
+
+## What the AI does
+
+| Part of MagicBook | AI work | Priced per |
+|---|---|---|
+| Spark, Shape, Plot | Premises, blurbs, the story plan | Words, by the text model |
+| Cast & World | Suggestions, auditions, interviews, fill-in-the-blanks, continuity-style catch-ups | Words, by the text model |
+| Manuscript and Story Room | Scenes, continuation, rewrites, notes, beta-reader reactions | Words, by the text model |
+| Storyland and Family | Story text for every page | Words, by the text model |
+| Picture studio and character sheets | Pictures for pages, covers and characters | Picture, by the image model |
+| Reader narration | Spoken narration of chapters | Characters, by the voice |
+| Voice input | Speech turned into text | Recording, by the voice |
+
+The admin sets the price of every model on **AI** pages. The price you see on each button is the estimate for that step.
+
+## Credits
+
+Each AI step **holds** its estimated cost when it starts. When it finishes, MagicBook charges the actual cost and releases the rest of the hold. If the step fails, the whole hold is released and nothing is charged. A step that stalls is released by the background clean-up. See [Credits](/account/credits).
+
+Your balance on Home and in **Settings → Credits** shows the credits available, the credits on hold, and your history.
+
+## Statuses
+
+The AI activity card and the book show each step's status:
+
+- **Waiting**: the step is queued and has not started.
+- **Working**: the step is running.
+- **Finished**: the result is in your book.
+- **Failed**: the step did not finish. The card shows the reason.
+
+## Safety
+
+Every request is checked before it runs, and every upload is checked too. Children's and teen books are checked more strictly than adult books. A result that is blocked by the safety check is not shown and is not charged. The admin can see every block in the moderation log. See [Safety](/admin/safety).
+
+## When a step fails
+
+- **Not enough credits** stops the step before it starts. Add credits, then try again.
+- **A temporary error from the AI provider** is retried automatically. If the retries fail, the step shows as **Failed**.
+- **The step is stuck** after a long wait is marked as failed by the background clean-up.
+
+To try again, press the same button again.

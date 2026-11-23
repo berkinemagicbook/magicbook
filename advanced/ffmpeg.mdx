@@ -1,0 +1,29 @@
+---
+title: 'ffmpeg'
+description: 'When MagicBook needs ffmpeg, how it finds it, how to test it, and what works without it.'
+---
+
+ffmpeg is a command-line audio and video tool. MagicBook does not need it for its core features, such as books, pictures, reading and the PDF. Two optional plugins use it:
+
+- **Audiobook Studio** uses ffmpeg to mix audio, add sound effects and build M4B files. See [Audiobook Studio](/plugins/audiobook-studio).
+- **Voice Cloning** uses ffmpeg to convert recordings to MP3 before they go to ElevenLabs. See [Voice Cloning](/plugins/voice-cloning).
+
+## How MagicBook finds it
+
+The plugins try, in this order:
+
+1. The ffmpeg installed on the server, or the path set in **ffmpeg path (optional)** and **ffprobe path (optional)** on the plugin's settings page. The same paths can be set in `.env` with `AUDIOBOOK_FFMPEG_PATH` and `AUDIOBOOK_FFPROBE_PATH`.
+2. The copy shipped in `vendor/ffmpeg`.
+
+The plugins run ffmpeg through `shell_exec`, so that PHP function must be enabled. Many shared hosts disable it.
+
+## Test it
+
+Open the plugin's settings page and press **Test ffmpeg**. The page shows whether **shell_exec** is **Enabled** or **Disabled by the host**, and which copy is in use: **ffmpeg installed on the server** or **The copy in vendor/ffmpeg**.
+
+## Without ffmpeg
+
+- **Audiobook Studio** still renders voice-only chapters, and exports them as MP3.
+- **Voice Cloning** sends recordings to ElevenLabs as WAV.
+
+Nothing is lost, but the audiobook has no sound effects or music mix without ffmpeg.

@@ -1,0 +1,36 @@
+---
+title: 'AI generation problems'
+description: 'Find out why a chapter, picture, narration or voice step failed, and fix the key, model, balance or safety cause.'
+---
+
+When a customer says a book did not write, a picture did not draw or a step failed, start with the step's error on **AI → Generation activity**. The error names the cause in most cases.
+
+## Common errors and fixes
+
+| What you see | Cause | Fix |
+|---|---|---|
+| **No model can do this job yet** | No enabled model with a saved key fits the job. | Save the provider's key and enable a model on [Text models](/admin/text-models) or [Image models](/admin/image-models). |
+| **No key** on a model | The provider has no saved key. | Add the key on [AI providers](/admin/ai-providers). |
+| Authentication or key error from the provider | The key is wrong, revoked or copied with a space. | Replace the key and press **Save and test**. |
+| Balance, quota or billing error from the provider | The provider account has no credit left or a spending limit was reached. | Add credit at the provider. |
+| Model not found | The provider renamed or retired the model. | Choose a current model id, and edit the model on [Text models](/admin/text-models). |
+| Rate limit error | The provider limits how many calls you may make per minute. | Wait and try again, or raise your provider limit. The app retries a few times automatically. |
+| Timeout | The provider answered too slowly. | Try again. For a persistent timeout, see the `AI_TEXT_TIMEOUT` and `AI_IMAGE_TIMEOUT` settings in [Environment variables](/advanced/environment-variables). |
+| **Blocked** by safety | The content check rejected the request or result. | Nothing is charged. Check the [moderation log](/admin/safety) if you think the threshold is too strict. |
+| **Not enough credits** | The customer's balance cannot cover the step's estimate. | The customer adds credits or uses a plan. See [Credits](/account/credits). |
+| **Working** for a long time | The step stopped responding. | The background clean-up marks it failed and releases its credits. See [Cron and queue](/installation/cron-and-queue). |
+
+## Pictures that do not match
+
+If the same character looks different from page to page:
+
+- Check that the image model used for **Character sheet** accepts references. A model without references cannot use the sheet. See [Image models](/admin/image-models).
+- Draw the character sheet again, then redraw the pages.
+
+## Books that stop mid-way
+
+Open the book's workspace and check the step status. A chapter that failed can be started again. Nothing from a failed step is charged, so the customer can try again without paying twice.
+
+## Check the logs
+
+For details the activity page does not show, read `storage/logs/laravel.log`. Search for the time of the failed step.

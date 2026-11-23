@@ -1,0 +1,75 @@
+---
+title: 'Environment variables'
+description: 'The settings in .env that MagicBook reads, what each one does, and the values that must not change after install.'
+---
+
+MagicBook reads its settings from the `.env` file in the project root. Change the file, then clear the configuration cache on the server, or ask your host to restart PHP, so the new values load.
+
+<Warning>
+Never change `APP_KEY` after install. MagicBook encrypts the AI keys and other secrets with it. A new key makes the saved keys unreadable, and you must enter them again.
+</Warning>
+
+## Application
+
+| Variable | Purpose |
+|---|---|
+| `APP_NAME` | The site name. |
+| `APP_URL` | The full address of the site, such as `https://magicbook.example.com`. |
+| `APP_ENV` | `production` on a live site. |
+| `APP_DEBUG` | `false` on a live site. `true` shows error details to visitors. |
+| `APP_KEY` | The encryption key. Set once by `php artisan key:generate`. |
+| `APP_LOCALE` and `APP_FALLBACK_LOCALE` | The default and fallback languages. |
+| `APP_VERSION` | The version number shown on the update page. |
+
+## Database
+
+| Variable | Purpose |
+|---|---|
+| `DB_CONNECTION` | `mysql` for MySQL or MariaDB. |
+| `DB_HOST`, `DB_PORT` | The database server and port. |
+| `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` | The database name, user and password. |
+
+## Queue and cache
+
+| Variable | Purpose |
+|---|---|
+| `QUEUE_CONNECTION` | The queue back end. `database` is the default. |
+| `QUEUE_RUN_IN_SCHEDULER` | `true` runs the queue from the cron job. Set `false` when a supervised `queue:work` process runs. See [Cron and queue](/installation/cron-and-queue). |
+| `CACHE_STORE` | Where the cache is kept. `database` is the default. See [Cache](/advanced/cache). |
+| `SESSION_DRIVER` | Where sign-in sessions are kept. The installer sets `database`. |
+
+## Media and storage
+
+| Variable | Purpose |
+|---|---|
+| `FILESYSTEM_DISK` | The disk new files are stored on. `local` by default. See [Storage](/advanced/storage). |
+| `MEDIA_MAX_IMAGE_MB` | The largest image a customer may upload, in MB. |
+| `MEDIA_VIDEO_FORMATS` | Video formats to allow, such as `mp4,mov,webm`. Empty by default, so video is off. |
+| `AUDIOBOOK_FFMPEG_PATH` and `AUDIOBOOK_FFPROBE_PATH` | The full path to ffmpeg and ffprobe, when the server does not put them on the path. See [ffmpeg](/advanced/ffmpeg). |
+| `AUDIOBOOK_STUDIO_DISK` | The disk Audiobook Studio stores its files on. |
+
+## Mail
+
+| Variable | Purpose |
+|---|---|
+| `MAIL_MAILER` | `smtp` to send mail, or `log` to write mail to the log while you test. |
+| `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD` | The mail server. You can also set these on [SMTP settings](/admin/smtp). |
+| `MAIL_FROM_ADDRESS` and `MAIL_FROM_NAME` | The sender address and name. |
+
+## AI requests
+
+| Variable | Purpose |
+|---|---|
+| `AI_TEXT_TIMEOUT` and `AI_TEXT_RETRIES` | How long a text call may wait for the provider, and how many times it is retried. |
+| `AI_IMAGE_TIMEOUT` and `AI_IMAGE_RETRIES` | The same for picture calls. |
+| `AI_RUN_TIMEOUT` | The longest a whole AI step may run before it is marked as failed. |
+
+The defaults suit most providers. Raise the timeouts only if the provider often answers slowly, because a longer wait keeps the customer waiting.
+
+## Demo content
+
+`DEMO_EMAIL` sets the account that receives the demo books. See [Quickstart](/getting-started/quickstart).
+
+## Logging
+
+`LOG_CHANNEL`, `LOG_LEVEL` and `LOG_DAILY_DAYS` set where errors are written and how long they are kept. The log file is `storage/logs/laravel.log`.

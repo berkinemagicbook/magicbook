@@ -1,0 +1,45 @@
+---
+title: 'Requirements'
+description: 'What your server needs to run MagicBook: PHP, extensions, database, folders, cron and the AI keys.'
+---
+
+The web installer checks most of this for you. Check it before you upload the files, so you do not find a missing extension halfway through.
+
+## Server
+
+| Item | Needed | Notes |
+|---|---|---|
+| PHP | 8.3 or newer | Laravel 13 needs this version. |
+| PHP extensions | `bcmath`, `ctype`, `curl`, `dom`, `fileinfo`, `gd`, `iconv`, `intl`, `json`, `mbstring`, `mysqli`, `openssl`, `PDO`, `pdo_mysql`, `simplexml`, `tokenizer`, `xml`, `xmlreader`, `xmlwriter`, `zip` | These are the extensions the installer checks. |
+| PHP function | `proc_open` must be enabled | MagicBook uses it to run its background work. Some hosts disable it. |
+| Apache | `mod_rewrite` | Only when the site runs on Apache. |
+| Database | MySQL 8 or MariaDB 10.6 or newer | Create an empty database and a user with full rights on it. |
+| Cron | One cron job that runs every minute | See [Cron and queue](/installation/cron-and-queue). |
+| Writable by the web server | `.env`, `bootstrap/cache/`, `public/uploads/`, `public/media/`, `lang/` and `storage/` | The installer's Permissions page lists the storage subfolders too. |
+| Outbound HTTPS | Allowed | The AI providers, ElevenLabs and the license server are called over HTTPS. |
+
+MagicBook does not need a Node process, a queue supervisor or a video encoder while it runs.
+
+<Note>
+ffmpeg and `shell_exec` are optional. They matter only for [Audiobook Studio](/plugins/audiobook-studio) and [Voice Cloning](/plugins/voice-cloning). Without them, those plugins still work with simpler outputs. See [ffmpeg](/advanced/ffmpeg).
+</Note>
+
+## AI keys
+
+MagicBook calls each AI provider directly with the key you save in **AI → AI Providers**. You need:
+
+- At least one text provider (OpenAI, Anthropic, Google Gemini or xAI) for writing. Every book needs a text model.
+- An image provider (Google Gemini, OpenAI, FLUX, Ideogram or Recraft) for pictures and covers. Picture books need one.
+- An ElevenLabs key for narration and voice input. Without it, the Narrate button and the Voices library stay hidden.
+- An OpenAI key is strongly recommended. Its moderation check is free, and children's and teen books need a safety check before they can be generated.
+
+See [AI providers](/admin/ai-providers) for setup.
+
+## Accounts and mail
+
+- Set up an SMTP account, or keep `MAIL_MAILER=log` while you test. See [SMTP settings](/admin/smtp).
+- Have the license key and the Envato username of the buyer ready for activation during the install.
+
+## Browser
+
+Customers use a current Chrome, Edge, Firefox or Safari. The reader, the Story Room and Storyland use animation and touch input, so an up-to-date browser gives the best result.

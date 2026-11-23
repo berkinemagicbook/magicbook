@@ -1,0 +1,23 @@
+---
+title: 'Google Maps'
+description: 'Turn on Google Maps for the countries map on the accounts dashboard, with an API key you create in Google Cloud.'
+---
+
+The admin accounts dashboard draws a map of the countries your customers come from. That map uses Google Maps.
+
+## Create an API key
+
+<Steps>
+  <Step title="Open Google Cloud">
+    In the [Google Cloud Console](https://console.cloud.google.com/), choose your project and enable the **Maps JavaScript API**.
+  </Step>
+  <Step title="Create a key">
+    Create an API key under **Credentials**. Restrict it to the Maps JavaScript API and to your site's domain.
+  </Step>
+</Steps>
+
+## Save it in MagicBook
+
+Open **Backend Settings → Global Settings**, turn on **Enable Google Maps**, paste the **Google Maps API Key**, then press **Save**.
+
+Without a key, the accounts dashboard shows **Google Maps is Disabled** in place of the map. Everything else on the page still works.

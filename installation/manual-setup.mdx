@@ -1,0 +1,73 @@
+---
+title: 'Manual setup'
+description: 'Set up MagicBook from the command line when the web installer cannot be used, with the .env values it needs.'
+---
+
+Use the [web installer](/installation/web-installer) whenever you can. It creates the admin account, stores the license and runs the seeders for you. Use this page only when the installer cannot write its files, or when you prefer the command line.
+
+<Warning>
+Never run `php artisan migrate:fresh`, `migrate:refresh`, `migrate:reset` or `db:wipe` on a database that holds data. They delete every table. Run `php artisan migrate` to apply new migrations.
+</Warning>
+
+## Steps
+
+<Steps>
+  <Step title="Upload the files">
+    Upload the application to the folder your domain points to. Include hidden files such as `.env.example` and `.htaccess`.
+  </Step>
+  <Step title="Install the PHP dependencies">
+    From the project folder, run:
+
+    ```bash
+    composer install --no-dev --optimize-autoloader
+    ```
+  </Step>
+  <Step title="Create the .env file">
+    Copy `.env.example` to `.env`, then set at least these values:
+
+    ```dotenv
+    APP_NAME=MagicBook
+    APP_ENV=production
+    APP_DEBUG=false
+    APP_URL=https://your-domain.example
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=your_database
+    DB_USERNAME=your_user
+    DB_PASSWORD=your_password
+    ```
+
+    Keep `APP_DEBUG=false` on a live site. Debug pages can show database details to visitors.
+  </Step>
+  <Step title="Generate the application key">
+    ```bash
+    php artisan key:generate
+    ```
+  </Step>
+  <Step title="Create the tables and seed the defaults">
+    ```bash
+    php artisan migrate --force
+    php artisan db:seed --force
+    ```
+
+    The seeders add the roles, the payment gateway list, the default text and image models, the art styles and the finance settings.
+  </Step>
+  <Step title="Create the first admin">
+    The web installer creates the admin account. Without it, create a user and give that user the `admin` role, for example in `php artisan tinker` with `$user->assignRole('admin')`. The `admin` role exists after the seeders have run.
+  </Step>
+  <Step title="Activate the license">
+    Sign in as the admin and open **Platform → Activation**. Enter the license key and the Envato username, then click **Activate License**. See [License activation](/license/activation).
+  </Step>
+  <Step title="Add the cron job">
+    Add the cron line from [Cron and queue](/installation/cron-and-queue).
+  </Step>
+</Steps>
+
+## Permissions
+
+The web server user must be able to write to `storage/` and `bootstrap/cache/`, and to `public/uploads/` for logos and media. Everything else can stay read-only.
+
+## Next
+
+Continue with the [post-install checklist](/installation/post-install-checklist).

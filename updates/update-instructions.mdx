@@ -1,0 +1,37 @@
+---
+title: 'Update instructions'
+description: 'Install a new MagicBook version from the admin panel, and what to check after the update.'
+---
+
+MagicBook checks for new versions from the admin panel. The update replaces the program files with the new release. Your data stays in the database and the storage folders.
+
+## Before you update
+
+- Keep the license active. The update check uses the license saved on **Platform → Activation**. See [License activation](/license/activation).
+- Copy the database and the `storage/` folder somewhere safe. Keep a copy of `.env` as well. A backup is your own step, MagicBook does not create one for you.
+- Read the changelog for the new version. See [Changelog](/updates/changelog).
+
+## Install an update
+
+<Steps>
+  <Step title="Open the Update page">
+    In the admin sidebar, open **Platform → Update**. The page shows **Current version** and the version you are running.
+  </Step>
+  <Step title="Check for updates">
+    If a newer version exists, the page shows **New version** and the update available notice. Read the **Changelogs** section first.
+  </Step>
+  <Step title="Install the update">
+    Click **Install Update**. The page shows **Installing, please wait...** while MagicBook downloads and extracts the files. Do not refresh the page or close the tab until it finishes.
+  </Step>
+  <Step title="Check the result">
+    When the page says the software is up to date, open **Platform → System Status**. Clear anything that is not **Ready**.
+  </Step>
+</Steps>
+
+## After the update
+
+- Clear the browser cache once, or reload the admin pages with a hard refresh, so the new styles load.
+- Check that the cron job still runs. See [Cron and queue](/installation/cron-and-queue).
+- Open the plugin pages you use. An update to a plugin is installed from **Platform → Plugins**, and its settings stay as they were.
+
+If an update fails halfway, the message on the page says what went wrong. Restore your backup and contact support with that message before you try again.

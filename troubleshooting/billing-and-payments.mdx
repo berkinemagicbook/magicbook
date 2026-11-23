@@ -1,0 +1,43 @@
+---
+title: 'Billing and payments problems'
+description: 'Fix a missing payment option, a failed checkout, a webhook that rejects payments, bank transfers that stay pending, and renewals that fail.'
+---
+
+Billing problems come from one of three places: the gateway's settings, the webhook that tells MagicBook a payment succeeded, or the plan's own setup. Start with the order's status on [Orders](/saas/orders).
+
+## No payment option at checkout
+
+- The gateway's **Status** is off, or the gateway has no saved keys. Turn it on and save. See [Payment gateways](/gateways/overview).
+- The plan's currency is not one the gateway accepts.
+- The plan is **Closed** or **Hidden** on [Plans](/saas/plans).
+
+## Checkout fails
+
+Read the message the customer sees, and the latest lines of `storage/logs/laravel.log`. Common causes:
+
+- A wrong secret key, or the test key used in live mode. Check the mode on the gateway page.
+- The gateway could not create the plan for a monthly or yearly subscription. The log names the reason.
+
+## Payment done, but the plan is not active
+
+The payment is recorded when the customer returns from the gateway, and again when the gateway's webhook arrives. If both fail, the order stays **Pending**.
+
+- Check that the webhook URL on the gateway matches the URL on its settings page.
+- Check that the **Webhook Signing Secret** belongs to the mode you use.
+- Open the order and approve it if it is a bank transfer.
+
+## Webhook rejected
+
+Gateways show failed deliveries with the response. A response of `invalid signature` or `webhook secret missing` means the signing secret is wrong or empty. Copy the secret from the gateway's webhook settings into the gateway page, and save.
+
+## Bank transfer stays pending
+
+A bank transfer is confirmed by hand. Check your bank account, then open the order and approve it. If the customer uploaded a proof of payment, check it against the transfer first. See [Orders](/saas/orders).
+
+## Renewal failed
+
+A renewal that fails shows as **Failed** on the order. Ask the customer to check their payment method on **Billing**. A subscription the gateway cancelled shows as **Cancelled**.
+
+## Credits did not arrive
+
+Check the order's status. Credits are added when the order is **Completed**. For a pending bank transfer, approve the order. For a completed order, check that the plan includes the credits. See [Plans](/saas/plans).

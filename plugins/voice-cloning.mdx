@@ -1,0 +1,77 @@
+---
+title: 'Voice Cloning'
+description: 'Let customers clone their own voice from a live recording or uploaded audio, and manage the ElevenLabs slots and consent rules.'
+---
+
+Voice Cloning lets a customer make a copy of their own voice, or of a voice they have permission to use. The customer records it in a guided booth in the browser, or uploads audio files. The cloned voice can narrate their Family and Writer's Room books, and can be cast in Audiobook Studio.
+
+Only the owner of a cloned voice can use it.
+
+## What customers get
+
+- **Live recording** in a guided booth in the browser. A room check listens for background noise.
+- **File uploads**: recordings they already have, trimmed in the browser before upload.
+- **Video files**, when the site owner allows them.
+- A voice page where they can hear the voice, try it on any text, set the default style, add or remove recordings, rename it or delete it.
+
+Customers reach their voices under **Books → Voice Cloning** in the sidebar.
+
+## Install and enable
+
+<Steps>
+  <Step title="Install">
+    Open **Platform → Plugins**, find Voice Cloning and press **Install**.
+  </Step>
+  <Step title="Open its settings">
+    Open **Platform → General Settings → Plugins → Voice Cloning**.
+  </Step>
+  <Step title="Switch it on">
+    Turn on **Enable Voice Cloning**. Decide whether the free tier gets it with **Include in the free tier**.
+  </Step>
+  <Step title="Choose the methods">
+    Choose **Live recording**, **File uploads** and, if you want them, **Video files**.
+  </Step>
+  <Step title="Set the prices">
+    Set the credits per new voice, per improvement (recordings added later), and per 1,000 characters in the playground. A clone that ElevenLabs refuses costs nothing.
+  </Step>
+  <Step title="Give it to plans">
+    Add Voice Cloning to the plans under **What's included**. Set **Voices per user** on the plugin page. Leave a plan empty to use the site limit.
+  </Step>
+</Steps>
+
+## Capacity at ElevenLabs
+
+Every cloned voice takes one custom voice slot on your ElevenLabs account, and each clone uses one of the account's monthly voice operations. The number of slots depends on the ElevenLabs plan, for example Creator 30, Pro 160 or Scale 660.
+
+The **ElevenLabs capacity** panel shows the slots and the operations used this month. Use **Slots kept free for you** to keep some slots for your own voices. When the account is full, customers see a message that voice cloning is not available right now, not an error.
+
+## Consent
+
+Every voice needs consent from the person whose voice it is.
+
+- **Live recordings** start with the speaker reading the consent statement aloud. Set the statement under **Consent statement**. The text uses `:name` for the speaker and `:site` for your site name.
+- **Uploads** need a confirmation and the speaker's name. Turn on **Uploads also need spoken consent** to add a spoken statement too.
+
+The consent record, and for live recordings the spoken statement, is kept with each voice. The plugin page lists every voice with its owner, consent and status, and you can delete any voice from there.
+
+## Recording retention
+
+Choose how long the original recordings are kept:
+
+- **Until the voice is deleted**
+- **For 30 days after cloning**
+- **Delete them right after cloning**
+
+The consent recording is always kept until the voice is deleted.
+
+## Limits
+
+Set the recording rules on the plugin page: the shortest, suggested and longest total length in seconds, the longest take, the recordings per voice and the largest file. Longer uploads are split into parts.
+
+## Playground
+
+Choose the default model and the longest text customers may try their voice with. Customers can use any model you have allowed for the playground.
+
+## ffmpeg
+
+ffmpeg is optional. The browser prepares every recording. With ffmpeg, recordings go to ElevenLabs as 192 kbps MP3. Without it, they go as WAV. See [ffmpeg](/advanced/ffmpeg).

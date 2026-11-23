@@ -1,0 +1,61 @@
+---
+title: 'Plans'
+description: 'Create pricing plans: the price and type, the credits, the limits on books and pictures, and the features each plan includes.'
+---
+
+A plan decides what a customer can do and how much. Create plans under **Finance → Pricing Plans**. Press **New plan** to start one, or select a plan to edit it.
+
+## General
+
+- **Plan name**: shown on the pricing page, at checkout and on the billing page.
+- **Description**: a short line shown with the plan.
+- **Status**: **Active**, **Closed** or **Hidden**. Set it to control whether new customers can buy the plan.
+- **Featured**: highlights the plan above the others on the pricing page.
+
+## Pricing
+
+- **Plan type**: **Monthly**, **Yearly**, **Lifetime** or **Prepaid**. Monthly and yearly plans renew automatically. Lifetime and prepaid plans are one-time payments. See [Prepaid plans](/saas/prepaid-plans).
+- **Price** and **Currency**: what the customer pays each billing cycle, or once for lifetime and prepaid plans.
+- **Free plan**: customers can sign up to it without paying.
+- **Free trial days**: how long before the first charge. Leave it blank for no trial.
+
+## Credits
+
+- The number of credits a subscriber gets.
+- Credits for monthly, yearly and lifetime plans renew each month. Unused monthly credits do not carry over.
+- Prepaid plan credits do not renew, and stay until spent.
+- Use `-1` to give unlimited credits.
+
+## Limits
+
+Each limit is a number the plan allows. The site maximums always apply on top. See [Book settings](/admin/book-settings).
+
+| Limit | What it caps |
+|---|---|
+| **New books per month** | Books a customer may start in a month. |
+| **Pages per picture book** | Pages in one picture book. |
+| **Words per chapter book or short story** | Words in one chapter book or short story. |
+| **Words per novel** | Words in one novel. |
+| **Illustrations per month** | Pictures drawn in a month. |
+| **Narration minutes per month** | Minutes of narration in a month. |
+| **Media storage** | Space the media library may use, in MB. |
+
+## What's included
+
+Tick the features the plan includes:
+
+- **Storyland**, **Family** and **Writer's Room**, the three modes.
+- **Child as the hero from a photo**, for a photo in a Family book.
+- **Narration**, and **PDF download** and **Share links**.
+- **Premium illustration models**, for the image models marked premium.
+- **Audiobook Studio** and **Voice Cloning**, when those plugins are installed.
+
+A feature that a customer's plan does not include is shown as locked.
+
+## Custom features
+
+Custom features are text perks listed on the pricing page, such as "Priority support". They do not grant anything in the app. Use them for information only.
+
+<Warning>
+Changing a plan's price, currency or type creates a new price at the payment gateway the next time it is bought. Existing subscriptions keep their old price. See [Stripe](/gateways/stripe) for how each gateway handles this.
+</Warning>

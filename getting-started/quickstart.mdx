@@ -1,0 +1,60 @@
+---
+title: 'Quickstart'
+description: 'From a fresh install to a finished test book: the setup order that gets MagicBook working on the first day.'
+---
+
+This takes about an hour, most of it waiting for the first AI jobs. Follow the order. Later steps depend on earlier ones.
+
+<Steps>
+  <Step title="Install MagicBook">
+    Run the [web installer](/installation/web-installer). Note the default admin login and change it at once.
+  </Step>
+  <Step title="Add the cron job">
+    Copy the line shown on the last installer page, or from **System Status**, into your hosting panel. See [Cron and queue](/installation/cron-and-queue).
+  </Step>
+  <Step title="Save your AI keys">
+    Open **AI → AI Providers**, paste a key for each provider you use and press **Save and test**. A green card means the key works.
+  </Step>
+  <Step title="Enable text models">
+    Open **AI → Text Models**, switch on the models you want, and set the credits each one costs. The first enabled model in the list is the default. See [Text models](/admin/text-models).
+  </Step>
+  <Step title="Enable image models">
+    Open **AI → Image Models** and switch on at least one model that can use character sheets. Otherwise picture characters will not match from page to page. See [Image models](/admin/image-models).
+  </Step>
+  <Step title="Set up narration (optional)">
+    With an ElevenLabs key saved, open **AI → Voices**, load the voices from your account and switch on the narrators you want customers to use. See [Voices](/admin/voices).
+  </Step>
+  <Step title="Turn on safety checks">
+    Open **AI → Safety** and check the thresholds for each audience. Children's books are only allowed when a check is available. See [Safety](/admin/safety).
+  </Step>
+  <Step title="Check book limits">
+    Open **Books → Book settings** and set the longest picture books, chapter books and novels the site allows. Plans can only set lower limits. See [Book settings](/admin/book-settings).
+  </Step>
+  <Step title="Make a test book">
+    Sign in as the admin and open **Bookshelf**. Start a Writer's Room novel, then work through Spark, Shape and Plot. Admin accounts are not limited by plans or credits, so you can test every step. See [Writer's Room](/user-guide/writers-room/overview).
+  </Step>
+  <Step title="Check System Status">
+    Open **Platform → System Status**. Cron, AI keys, PDF fonts and mail should all show **Ready**. Fix anything that does not before you open the site to customers.
+  </Step>
+</Steps>
+
+## Optional: demo books
+
+To fill the shelf for a screenshot or a demo, run this once from the project folder:
+
+```bash
+php artisan db:seed --class=MagicBookDemoSeeder --force
+```
+
+It adds five books to the first admin account: a Writer's Room novel and short story, a Family picture book and chapter book, and a Storyland picture book. The seeder only adds rows, and you can run it again safely. The picture books come without pictures. Open one and press **Draw all pages** to illustrate it.
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Post-install checklist" icon="list-check" href="/installation/post-install-checklist">
+    Everything else to set before you open the site.
+  </Card>
+  <Card title="Plans and credits" icon="credit-card" href="/saas/overview">
+    Sell plans and credit packs once you install the SaaS plugin.
+  </Card>
+</CardGroup>

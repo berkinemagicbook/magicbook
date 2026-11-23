@@ -1,0 +1,28 @@
+---
+title: 'Facebook login'
+description: 'Let customers sign in with Facebook by creating a Facebook app and saving its keys in MagicBook.'
+---
+
+Facebook login lets customers sign in with their Facebook account.
+
+## Create the Facebook app
+
+<Steps>
+  <Step title="Create an app">
+    Open the [Meta for Developers](https://developers.facebook.com/) site, create an app and add the **Facebook Login** product.
+  </Step>
+  <Step title="Add the redirect URI">
+    Copy the **Redirect URL** from **Backend Settings → Auth Settings → Facebook**. Add it to the app's valid OAuth redirect URIs.
+  </Step>
+  <Step title="Copy the keys">
+    Copy the app ID and the app secret.
+  </Step>
+</Steps>
+
+## Save the keys in MagicBook
+
+Open **Backend Settings → Auth Settings**, turn on **Enable Facebook Login**, paste the **Facebook API Key** (the app ID) and the **Facebook API Secret Key** (the app secret), then press **Save**.
+
+<Note>
+Keep the app in development mode until you have tested the sign-in with a second account. Switch it to live when you are ready for customers.
+</Note>
